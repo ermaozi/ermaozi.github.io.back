@@ -5,7 +5,7 @@ categories: python的日常应用
 description: 使用PyCharm
 keywords: pycharm
 typora-root-url: ..
-typora-copy-images-to: ..\images\posts\python_daily
+typora-copy-images-to: ..
 ---
 
 > 上一节我们学习了PyCharm的安装
