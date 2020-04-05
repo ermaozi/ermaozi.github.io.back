@@ -1,0 +1,127 @@
+# ---------------- #
+#   Main Configs   #
+# ---------------- #
+baseurl:
+url: https://www.ermaozi.xyz
+date_format: "ordinal"
+title: ermaozi
+subtitle: ""
+description: "ermaozi闷骚的程序员"
+keywords: ermaozi, 闷骚的程序员
+timezone: Asia/XiAn
+encoding: "utf-8"
+side_bar_repo_limit: 5
+
+# ---------------- #
+#      Author      #
+# ---------------- #
+author: ErMaozi
+organization: 
+organization_url: 
+github_username: ermaozi
+location: XiAn, China
+email: admin@ermaozi.xyz
+
+# ---------------- #
+#    Navigation    #
+# ---------------- #
+navs:
+  -
+    href: /
+    label: 首页
+
+  -
+    href: /categories/
+    label: 分类
+
+#   -
+#     href: /archives/
+#     label: 归档
+
+  -
+    href: /wiki/
+    label: 维基
+
+  -
+    href: /links/
+    label: 链接
+
+  -
+    href: /about/
+    label: 关于
+
+# ---------------- #
+#       RSS        #
+# ---------------- #
+subscribe_rss: /feed.xml
+
+# ---------------- #
+#      Jekyll      #
+# ---------------- #
+markdown: kramdown
+kramdown:
+    input: GFM
+highlighter: rouge
+paginate: 10
+lsi: false
+quiet: false
+excerpt_separator: "\n\n"
+permalink: /:year/:month/:day/:title/
+gems:
+    - jekyll-github-metadata
+    - rouge
+#     - jekyll-html-pipeline
+    - jekyll-paginate
+    - jekyll-sitemap
+    - jekyll-feed
+    - jemoji
+#     - jekyll-mentions
+collections:
+    wiki:
+        output: true
+        permalink: /wiki/:path/
+
+repository: ermaozi/ermaozi.github.io
+
+# ---------------- #
+#      Comments    #
+# ---------------- #
+# support provider: disqus, gitment, gitalk
+comments_provider: gitalk
+# !!!重要!!! 请修改下面这些信息为你自己申请的
+# !!!Important!!! Please modify infos below to yours
+# https://disqus.com
+disqus:
+    username: 
+# https://imsun.net/posts/gitment-introduction/
+gitment:
+    owner: ermaozi
+    repo: ermaozi.github.io
+    oauth:
+        client_id: 47a80d0fcc828e975c75
+        client_secret: c2b61f6d3b07db74a04ac86dbda3275380174077
+# https://github.com/gitalk/gitalk#install
+gitalk:
+    owner: ermaozi
+    repo: blog-comments
+    clientID: c1ea5cda63ed6016930a
+    clientSecret: 0687f034c2b51418da46eb5a9798de794c152f99
+# 在使用其它评论组件时可点击显示 Disqus
+lazy_load_disqus : false
+
+# ---------------- #
+#      Search      #
+# ---------------- #
+simple_jekyll_search:
+    # 是否支持全文搜索
+    fulltext: false
+    # 最多显示多少条搜索结果
+    limit: 10
+
+# ---------------- #
+#    Analytics     #
+# ---------------- #
+google:
+    analytics_id: UA-80669434-1
+
+theme: jekyll-theme-minimal
