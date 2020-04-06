@@ -4,7 +4,7 @@ title: Python的日常应用02
 categories: python的日常应用
 description: 教会你的程序说话
 keywords: print
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 > 大部分人在编写自己第一个程序的时候会做什么？

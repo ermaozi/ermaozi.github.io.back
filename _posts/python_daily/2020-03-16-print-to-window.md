@@ -4,7 +4,7 @@ title: Python的日常应用05
 categories: python的日常应用
 description: 在屏幕上滚动打印一句话
 keywords: print
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 > 我们在前四节中已经了解了什么是字符串、什么是切片、什么是循环

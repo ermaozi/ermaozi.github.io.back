@@ -4,8 +4,7 @@ title: Python的日常应用07
 categories: python的日常应用
 description: 使用PyCharm
 keywords: pycharm
-typora-root-url: ..
-typora-copy-images-to: ..
+typora-root-url: ../..
 ---
 
 > 上一节我们学习了PyCharm的安装

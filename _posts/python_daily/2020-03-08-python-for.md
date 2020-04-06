@@ -5,7 +5,7 @@ categories: python的日常应用
 description: 循环
 keywords: for 
 flow: true
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 > 沧海桑田，物换星移。

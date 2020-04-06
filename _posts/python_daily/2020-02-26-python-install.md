@@ -4,7 +4,7 @@ title: Python的日常应用01
 categories: python的日常应用
 description: 安装
 keywords: install
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 > 我们要先有 python 才能学习 python

@@ -4,7 +4,7 @@ title: Python的日常应用03
 categories: python的日常应用
 description: 字符串切片
 keywords: split
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 > 上回书说到，如何用python打印东西。

@@ -4,7 +4,7 @@ title: Python的日常应用06
 categories: python的日常应用
 description: 安装PyCharm
 keywords: pycharm
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 > 习得一身武艺，怎能不配三尺青锋？
