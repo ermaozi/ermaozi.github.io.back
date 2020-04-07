@@ -1,2 +1,1 @@
-# ermaozi.github.io
-# ermaozi.github.io
+https://www.ermaozi.xyz
