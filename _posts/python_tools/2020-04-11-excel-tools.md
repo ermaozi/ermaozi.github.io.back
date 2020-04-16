@@ -11,46 +11,107 @@ typora-root-url: ../..
 
 ```python
 # -*- coding:utf-8 -*-
+import re
+
 import xlrd
-from datetime import date
 
 
 class ExcelTools(object):
 
-    def __init__(self):
-        self.excel_data = list()
+    def __init__(self, full_file_path=None, sheet=None, title_index=1):
+        """
+        实例化查询对象
+        :param full_file_path: Excel文件的绝对路径(str)
+        :param sheet: sheet页的名称(str)或序号(int)
+        :param title_index: 表头的行号(int)
+        """
+        if not full_file_path:
+            full_file_path = ''
+        self.data = xlrd.open_workbook(full_file_path)
+        if isinstance(sheet, str):
+            sheet_name = sheet if isinstance(sheet, str) else sheet
+            self.table = self.data.sheet_by_name(sheet_name)
+        else:
+            sheet = sheet if sheet else 0
+            self.table = self.data.sheets()[sheet]
+        self.title_index = title_index - 1
+        self.mergeJson = {}  # 合并单元格与该单元格的数据
+        self.lld_data = []
+        # 实例化时获取lld data, 防止以后多次获取
+        self.get_lld_data()
 
-    def get_excel_data(self, excel_path, sheet_name):
-        wb = xlrd.open_workbook(excel_path)
-        table = wb.sheet_by_name(sheet_name)
-
-        colspan = {}
-        if table.merged_cells:
-            for item in table.merged_cells:
-                for row in range(item[0], item[1]):
-                    for col in range(item[2], item[3]):
-                        if (row, col) != (item[0], item[2]):
-                            colspan.update({(row, col): (item[0], item[2])})
-
-        for i in range(table.nrows):
-            tmp_data = []
-            for j in range(table.ncols):
-                if colspan.get((i, j)):
-                    tmp_data.append(table.cell_value(*colspan.get((i, j))))
-                else:
-                    if table.cell(i, j).ctype == 3:
-                        date_value = xlrd.xldate_as_tuple(table.cell_value(i, j), wb.datemode)
-                        date_tmp = date(*date_value[:3]).strftime('%Y/%m/%d')
-                        tmp_data.append(date_tmp)
+    def get_lld_data(self):
+        try:
+            lists = self.table.merged_cells
+            title = self.table.row_values(self.title_index)
+            nrows = self.table.nrows  # 行数
+            for i in range(1, nrows):
+                rowValues = self.table.row_values(i)  # 某一行数据
+                for idx, v in enumerate(rowValues):  # 某一行中列的数据
+                    for mer in lists:  # 遍历合并单元格的列表  mer为元组
+                        if (mer[0] <= i < mer[1]) and (mer[2] <= idx < mer[3]):  # 判断是否是合并行
+                            # 处理合并行
+                            if v != "":  # 不为空的合并值
+                                self.mergeJson[mer] = v
+            # 解析数据
+            for i in range(self.title_index + 1, nrows):
+                rowValues = self.table.row_values(i)  # 某一行数据
+                event = {}
+                for idx, v in enumerate(rowValues):  # 某一行中列的数据
+                    if not title[idx]:
+                        continue
+                    # 去除值两边的空格
+                    v = v.strip() if isinstance(v, str) else v
+                    if self.mergeJson:
+                        for tuplerc in self.mergeJson:  # data为字典  key 为元组   value  为该合并单元格的值
+                            if (tuplerc[0] <= i < tuplerc[1]) and (tuplerc[2] <= idx < tuplerc[3]):  # 判断是否是合并行
+                                if v == "":  # 不为空的合并值
+                                    v = self.mergeJson[tuplerc]
+                            else:
+                                event[title[idx]] = v
                     else:
-                        tmp_data.append(table.cell_value(i, j))
-            self.excel_data.append(tuple(tmp_data))
+                        event[title[idx]] = v
+                self.lld_data.append(event)
+            return self.lld_data
+        except Exception as ex:
+            print(ex)
 
+    def search_for_lld(self, serch_dic):
+        """
+        从Excel中获取指定条件的值
+        :param serch_dic: {
+                              condition: {'表头1': '对应的正则表达式1', 表头2: '对应的正则表达式2', ...},
+                              result: ['期待返回表头1', '期待返回表头2', ...]
+                          }
+        :return: [
+                     {'期待返回表头1': '对应值1-1', '期待返回表头2', '值1-2'},
+                     {'期待返回表头1': '对应值2-1', '期待返回表头2', '值2-2'},
+                     ...
+                 ]
+        """
+        condition = serch_dic[u'condition']
+        result_list = serch_dic.get(u'result', [])
+        return_list = []
+        # 遍历每一行
+        for data in self.lld_data:
+            flag = True
+            ret_dic = {}
+            for k, v in condition.items():
+                value = data[k]
+                sear = re.search(v, str(value))
+                if not sear:  # v != data[k]:
+                    flag = False
+                    break
+            if not flag:
+                continue
+            if not result_list:
+                return_list.append(data)
+                continue
+            for k in result_list:
+                ret_dic[k] = data[k]
+            return_list.append(ret_dic)
+        return return_list
 
-if __name__ == '__main__':
-    et = ExcelTools()
-    et.get_excel_data("./test.xlsx", "Sheet1")
-    print(et.excel_data)
     
 ```
 
