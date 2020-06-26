@@ -4,10 +4,10 @@
 baseurl:
 url: https://www.ermaozi.xyz
 date_format: "ordinal"
-title: ermaozi
+title: 二猫子的blog
 subtitle: ""
-description: "ermaozi闷骚的程序员"
-keywords: ermaozi, 闷骚的程序员
+description: "二猫子的技术分享基地"
+keywords: 二猫子, 程序员，技术
 timezone: Asia/XiAn
 encoding: "utf-8"
 side_bar_repo_limit: 5
