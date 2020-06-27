@@ -15,7 +15,7 @@ typora-root-url: ../..
 
 ### 下载 Python
 
-1. 访问 python 官网的下载页面： [https://www.python.org/downloads/](https://link.zhihu.com/?target=https%3A//www.python.org/downloads/)
+1. 访问 python 官网的下载页面： [https://www.python.org/downloads/](https://www.python.org/downloads/)
 2. 选择需要下载的版本点击`Download`
 
 ![img](/images/posts/python_daily/01/01.jpg)
