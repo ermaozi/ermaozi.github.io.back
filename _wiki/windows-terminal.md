@@ -32,15 +32,37 @@ New-Item -ItemType SymbolicLink -Path ~/AppData/Local/Packages/Microsoft.Windows
 New-Item -ItemType SymbolicLink -Path ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 -Target ~/powershell.ps1
 ```
 
+如果是使用 PowerShell 7 Preview，执行
+
+```
+New-Item -ItemType SymbolicLink -Path <我的文档>/PowerShell/Microsoft.PowerShell_profile.ps1 -Target <个人目录>/powershell.ps1
+```
+
+上面两个目录需要使用绝对路径，不然会报错。
+
 我的 PowerShell 配置见 <https://github.com/mzlogin/config-files/blob/master/powershell.ps1>
 
 ## 自定义快捷键
 
 比如在 json 配置文件的 globals -- keybindings 里添加如下内容，可以将 Windows Terminal 的复制粘贴映射为 ctrl+c 和 ctrl+v（这里真的要吐槽下，为什么不给默认映射上呢？）：
 
+*Updated 2020-04-26： 下面这些不用再手动映射了，新版本里都给了默认映射。*
+
 ```json
 { "command": "copy", "keys": ["ctrl+c"] },
-{ "command": "paste", "keys": ["ctrl+v"]}
+{ "command": "paste", "keys": ["ctrl+v"] }
+```
+
+split pane 和 move focus within panes：
+
+```json
+{ "command" : "splitHorizontal", "keys": [ "alt+-" ] },
+{ "command" : "splitVertical", "keys": [ "alt+\\" ] },
+{ "command" : "closePane", "keys": [ "alt+w" ] },
+{ "command" : "moveFocusLeft", "keys": [ "alt+left" ] },
+{ "command" : "moveFocusRight", "keys": [ "alt+right" ] },
+{ "command" : "moveFocusUp", "keys": [ "alt+up" ] },
+{ "command" : "moveFocusDown", "keys": [ "alt+down" ] }
 ```
 
 参考：<https://github.com/microsoft/terminal/blob/master/doc/user-docs/UsingJsonSettings.md>
