@@ -14,7 +14,9 @@ keywords: Windows, PowerShell
 
 ## 配置文件位置
 
-默认配置文件 `~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1`。
+PowerShell 6 默认配置文件 `~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1`。
+
+PowerShell 7 默认配置文件 `<我的文档>/PowerShell/Microsoft.PowerShell_profile.ps1`
 
 Cmder 的 PowerShell 配置文件 `<cmd_install_path>/config/user-profile.ps1`。
 

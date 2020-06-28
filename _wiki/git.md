@@ -590,3 +590,69 @@ fatal: no man viewer handled the request
 ```
 git config --global help.format web
 ```
+
+### 比较两个分支的差异
+
+显示出所有差异详情：
+
+```sh
+git diff <branch_name_1> <branch_name_2>
+```
+
+显示有差异的文件列表：
+
+```sh
+git diff <branch_name_1> <branch_name_2> --stat
+```
+
+显示指定文件的差异详情：
+
+```sh
+git diff <branch_name_1> <branch_name_2> <filename>
+```
+
+查看 A 分支有，B 分支没有的提交：
+
+```sh
+git log <branch_name_A> ^<branch_name_B>
+```
+
+### git 操作时报警告
+
+警告信息：
+
+```
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+The ECDSA host key for gitlab.xxxx.com has changed,
+and the key for the corresponding IP address 121.40.151.8
+is unknown. This could either mean that
+DNS SPOOFING is happening or the IP address for the host
+and its host key have changed at the same time.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:bud2tDwxl9687vMOUUBGXlwZhjxDTu7eVF43ojAu1Pw.
+Please contact your system administrator.
+Add correct host key in /c/Users/mzlogin/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /c/Users/mzlogin/.ssh/known_hosts:1
+ECDSA host key for gitlab.xxxx.com has changed and you have requested strict checking.
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+解决方案：
+
+```
+rm ~/.ssh/known_hosts
+```
+
+然后重新操作即可。
