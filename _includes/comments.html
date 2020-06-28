@@ -39,10 +39,10 @@
     {% when 'disqus' %}
       {% if site.disqus and site.disqus.username %}
         {% assign load_disqus = true %}
-        <!-- Disqus Protection, see https://github.com/mzlogin/mzlogin.github.io/issues/2 -->
-        {% if site.disqus.username == 'mzlogin' %}
+        <!-- Disqus Protection, see https://github.com/ermaozi/ermaozi.github.io/issues/2 -->
+        {% if site.disqus.username == 'ermaozi' %}
           {% assign load_disqus = false %}
-          {% if site.url contains 'mazhuang.org' %}
+          {% if site.url contains 'www.ermaozi.xyz' %}
             {% assign load_disqus = true %}
           {% endif %}
         {% endif %}
