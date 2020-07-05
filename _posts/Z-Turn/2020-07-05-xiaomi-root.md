@@ -1,5 +1,5 @@
 ---
-layout: z-turn 
+layout: post
 title: 小米 MAX3 刷机 root
 categories: 折腾日记
 description: 小米
