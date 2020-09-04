@@ -1,1 +1,1 @@
-https://www.ermaozi.xyz
+https://blog.ermao.net
